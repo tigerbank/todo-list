@@ -1,0 +1,13 @@
+.addTodo {
+  margin-top: 17px;
+  input[type='text'] {
+    border: none;
+    width: 100%;
+    border-radius: 9999px;
+    height: 46px;
+    padding: 0 20px;
+  }
+  input[type='text']::placeholder {
+    color: #bcbcbc;
+  }
+}

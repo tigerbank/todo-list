@@ -1,0 +1,28 @@
+.tasks {
+  margin-top: 33px;
+
+  &__title {
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+  }
+
+  &__lists li {
+    margin-top: 17px;
+    background: #fff;
+    border-radius: 9999px;
+    padding: 15px 20px;
+    list-style: none;
+    display: flex;
+  }
+
+  &__lists li input[type='checkbox'] {
+    margin-right: 16px;
+    border: solid 3px #585292;
+  }
+
+  &__button {
+    margin-left: auto;
+    cursor: pointer;
+  }
+}
