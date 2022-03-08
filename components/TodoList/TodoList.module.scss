@@ -7,3 +7,11 @@
   margin-right: auto;
   margin-top: 42px;
 }
+
+@media only screen and (max-width: 735px) {
+  .todoList {
+    margin-top: 20px;
+    width: 95%;
+    padding: 61px 30px;
+  }
+}
