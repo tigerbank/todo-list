@@ -1,18 +1,15 @@
 import React, { useContext, useState } from 'react';
-import axios from 'axios';
 import styles from './AddTodo.module.scss';
 import { Store } from '@/utils/Store';
+import { addTodo } from '@/utils/api';
 
 function AddTodo() {
   const [inputText, setInputText] = useState('');
   const { dispatch } = useContext(Store);
 
-  const handleKeyPress = async (event: any) => {
+  const handleKeyPress = async (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Enter') {
-      const response = await axios.post(`http://localhost:3001/todos/`, {
-        title: inputText,
-        completed: false,
-      });
+      const response = await addTodo(inputText);
       dispatch({ type: 'ADD_TODO', payload: response.data });
       setInputText('');
     }

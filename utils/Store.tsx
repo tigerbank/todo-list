@@ -1,6 +1,6 @@
 import { createContext, useReducer } from 'react';
 
-import { StoreContextState } from '@/interfaces/common';
+import { StoreContextState, TodoProps } from '@/interfaces/common';
 
 const initialState = {
   todoLists: [],
@@ -15,7 +15,7 @@ export const Store = createContext<{
   dispatch: () => null,
 });
 
-function reducer(state: any, action: any) {
+function reducer(state: StoreContextState, action: any) {
   switch (action.type) {
     case 'SET_TODOLISTS': {
       return { ...state, todoLists: action.payload };
@@ -26,7 +26,7 @@ function reducer(state: any, action: any) {
     }
 
     case 'UPDATE_TODO': {
-      const todoLists = state.todoLists.map((todoList: any) =>
+      const todoLists = state.todoLists.map((todoList: TodoProps) =>
         todoList.id === action.payload.id
           ? { ...todoList, title: action.payload.title }
           : todoList,
@@ -35,10 +35,10 @@ function reducer(state: any, action: any) {
       return { ...state, todoLists };
     }
 
-    case 'REMOVE_TODO': {
+    case 'DELETE_TODO': {
       const id = action.payload;
       const todoLists = state.todoLists.filter(
-        (todoList: any) => todoList.id !== id,
+        (todoList: TodoProps) => todoList.id !== id,
       );
 
       return { ...state, todoLists };
@@ -47,7 +47,7 @@ function reducer(state: any, action: any) {
     case 'TOGGLE_COMPLETE': {
       const id = action.payload;
 
-      const todoLists = state.todoLists.map((todoList: any) =>
+      const todoLists = state.todoLists.map((todoList: TodoProps) =>
         todoList.id === id
           ? { ...todoList, completed: !todoList.completed }
           : todoList,
@@ -57,20 +57,6 @@ function reducer(state: any, action: any) {
     }
 
     case 'UPDATE_FILTER': {
-      // const todoLists = state.todoLists.filter((todoList: any) => {
-      //   if (action.payload === 'All') {
-      //     return todoList;
-      //   }
-
-      //   if (action.payload === 'Done') {
-      //     return todoList.completed === true;
-      //   }
-
-      //   if (action.payload === 'Undone') {
-      //     return todoList.completed === false;
-      //   }
-      // });
-
       return { ...state, filter: action.payload };
     }
 

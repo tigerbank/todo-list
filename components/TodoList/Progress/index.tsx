@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
+
 import styles from './Progress.module.scss';
 import { Store } from '@/utils/Store';
+import { TodoProps } from '@/interfaces/common';
 
 function Progress() {
   const { state } = useContext(Store);
 
   const completedTasks = state.todoLists.filter(
-    (todoList: any) => todoList.completed,
+    (todoList: TodoProps) => todoList.completed,
   );
 
   return (

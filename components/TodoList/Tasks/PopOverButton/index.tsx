@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import axios from 'axios';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import styles from './PopOverButton.module.scss';
 import { Store } from '@/utils/Store';
+import { deleteTodo } from '@/utils/api';
+import { TodoProps } from '@/interfaces/common';
 
 function PopOverButton({
   todoList,
   handleEdit,
   onClickOutside,
 }: {
-  todoList: any;
+  todoList: TodoProps;
   handleEdit: any;
   onClickOutside: () => void;
 }) {
@@ -17,21 +19,23 @@ function PopOverButton({
   const { dispatch } = useContext(Store);
   const ref = useRef<any>();
 
-  const removeTodo = async (id: number) => {
+  const handleDeleteTodo = async (id: string) => {
     let text = 'Are you sure you want to delete? \nPress OK or Cancel.';
     if (confirm(text) === true) {
-      dispatch({ type: 'REMOVE_TODO', payload: id });
-      await axios.delete(`http://localhost:3001/todos/${id}`);
+      dispatch({ type: 'DELETE_TODO', payload: id });
+      await deleteTodo(id);
     }
   };
 
   useEffect(() => {
-    const handleClickOutside = (event: any) => {
+    const handleClickOutside: any = (event: React.MouseEvent<HTMLElement>) => {
       if (ref.current && !ref.current.contains(event.target)) {
         onClickOutside && onClickOutside();
         setIsOpen(false);
+        console.log(typeof handleClickOutside);
       }
     };
+
     document.addEventListener('click', handleClickOutside, true);
     return () => {
       document.removeEventListener('click', handleClickOutside, true);
@@ -40,23 +44,29 @@ function PopOverButton({
 
   return (
     <div className={styles.popOverButton} onClick={() => setIsOpen(!isOpen)}>
-      <Image
-        src="/images/list-button.svg"
-        alt="button"
-        layout="fixed"
-        width="20"
-        height="6"
-      />
+      <motion.div whileHover={{ scale: 1.3 }}>
+        <Image
+          src="/images/list-button.svg"
+          alt="button"
+          layout="fixed"
+          width="20"
+          height="6"
+        />
+      </motion.div>
+
       {isOpen && (
-        <ul
+        <motion.ul
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2 }}
           ref={ref}
           onBlur={() => {
             setIsOpen(false);
           }}
         >
           <li onClick={() => handleEdit(todoList)}>Edit</li>
-          <li onClick={() => removeTodo(todoList.id)}>Delete</li>
-        </ul>
+          <li onClick={() => handleDeleteTodo(todoList.id)}>Delete</li>
+        </motion.ul>
       )}
     </div>
   );

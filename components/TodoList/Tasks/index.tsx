@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import { motion } from 'framer-motion';
 import FilterTodo from '../FilterTodo';
 import styles from './Tasks.module.scss';
 import PopOverButton from './PopOverButton';
 import { Store } from '@/utils/Store';
 import Loading from '@/components/common/Loading';
+import { getTodoLists, toggleCheckBox, updateTodo } from '@/utils/api';
+import { TodoProps } from '@/interfaces/common';
 
 function Tasks() {
   const { state, dispatch } = useContext(Store);
@@ -12,13 +14,13 @@ function Tasks() {
   const [loading, setLoading] = useState(false);
   const [inputEdit, setInputEdit] = useState('');
   const [editId, setEditId] = useState('');
-  const [filteredLists, setFilteredLists] = useState([]);
+  const [filteredLists, setFilteredLists] = useState<TodoProps[]>([]);
 
-  const getTodoLists = async () => {
+  const fetchTodoLists = async () => {
     try {
       setLoading(true);
-      const todoLists = await axios.get('http://localhost:3001/todos');
-      dispatch({ type: 'SET_TODOLISTS', payload: todoLists.data });
+      const todoLists = await getTodoLists();
+      dispatch({ type: 'SET_TODOLISTS', payload: todoLists });
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -27,36 +29,30 @@ function Tasks() {
   };
 
   useEffect(() => {
-    getTodoLists();
+    fetchTodoLists();
   }, []);
 
-  const toggleCheckBox = async (selectedList: any) => {
-    dispatch({ type: 'TOGGLE_COMPLETE', payload: selectedList.id });
-    await axios.put(`http://localhost:3001/todos/${selectedList.id}`, {
-      ...selectedList,
-      completed: !selectedList.completed,
-    });
+  const handleToggleCheckBox = async (selectedTodo: TodoProps) => {
+    dispatch({ type: 'TOGGLE_COMPLETE', payload: selectedTodo.id });
+    await toggleCheckBox(selectedTodo);
   };
 
-  const handleEdit = (todoList: any) => {
+  const handleEdit = (todoList: TodoProps) => {
     setInputEdit(todoList.title);
     setEditId(todoList.id);
   };
 
-  const updateTodo = async (todoList: any) => {
+  const handleUpdateTodo = async (selectedTodo: TodoProps) => {
     dispatch({
       type: 'UPDATE_TODO',
-      payload: { ...todoList, title: inputEdit },
+      payload: { ...selectedTodo, title: inputEdit },
     });
-    await axios.put(`http://localhost:3001/todos/${todoList.id}`, {
-      ...todoList,
-      title: inputEdit,
-    });
+    await updateTodo(selectedTodo, inputEdit);
     setEditId('');
   };
 
   useEffect(() => {
-    const filtered = state.todoLists.filter((todoList: any) => {
+    const filtered = state.todoLists.filter((todoList: TodoProps) => {
       if (state.filter === 'All') {
         return todoList;
       }
@@ -96,9 +92,9 @@ function Tasks() {
         <FilterTodo onClickOutside={() => {}} />
       </div>
 
-      <ul className={styles.tasks__lists}>
+      <motion.ul className={styles.tasks__lists}>
         {filteredLists &&
-          filteredLists.map((todoList: any) => {
+          filteredLists.map((todoList: TodoProps) => {
             if (todoList.id !== editId) {
               return (
                 <li key={todoList.id}>
@@ -107,7 +103,7 @@ function Tasks() {
                       <input
                         type="checkbox"
                         checked={todoList.completed}
-                        onChange={() => toggleCheckBox(todoList)}
+                        onChange={() => handleToggleCheckBox(todoList)}
                       />
                     </div>
 
@@ -137,18 +133,19 @@ function Tasks() {
                       defaultValue={todoList.title}
                       onChange={(e) => setInputEdit(e.target.value)}
                     />
-                    <button
+                    <motion.button
                       className={styles.tasks__button}
-                      onClick={() => updateTodo(todoList)}
+                      whileHover={{ scale: 1.1 }}
+                      onClick={() => handleUpdateTodo(todoList)}
                     >
                       Save
-                    </button>
+                    </motion.button>
                   </div>
                 </li>
               );
             }
           })}
-      </ul>
+      </motion.ul>
     </div>
   );
 }
