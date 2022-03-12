@@ -14,4 +14,34 @@
   input[type='text']:focus {
     outline-color: #585292;
   }
+
+  &__errorMessage {
+    color: #e07c7c;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  &__button {
+    width: 100%;
+    height: 46px;
+    border: none;
+    border-radius: 9999px;
+    background-color: #585292;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    margin-top: 20px;
+    display: none;
+    &:hover {
+      background-color: #756ebb;
+    }
+  }
+
+  @media only screen and (max-width: 735px) {
+    &__button {
+      display: block;
+    }
+  }
 }
