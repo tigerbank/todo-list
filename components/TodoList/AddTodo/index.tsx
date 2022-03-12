@@ -6,24 +6,29 @@ import { addTodo } from '@/utils/api';
 function AddTodo() {
   const noTextMessage = 'You need to write something!';
   const [inputText, setInputText] = useState('');
+  const [loading, setLoading] = useState(false);
   const { dispatch } = useContext(Store);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleKeyPress = async (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'Enter' && inputText.length > 0) {
-      const response = await addTodo(inputText);
-      dispatch({ type: 'ADD_TODO', payload: response.data });
-      setInputText('');
+  const addData = async () => {
+    setLoading(true);
+    const response = await addTodo(inputText);
+    dispatch({ type: 'ADD_TODO', payload: response.data });
+    setInputText('');
+    setLoading(false);
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter' && inputText.length > 0 && !loading) {
+      addData();
     } else {
       setErrorMessage(noTextMessage);
     }
   };
 
-  const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (inputText.length > 0) {
-      const response = await addTodo(inputText);
-      dispatch({ type: 'ADD_TODO', payload: response.data });
-      setInputText('');
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (inputText.length > 0 && !loading) {
+      addData();
     } else {
       setErrorMessage(noTextMessage);
     }
