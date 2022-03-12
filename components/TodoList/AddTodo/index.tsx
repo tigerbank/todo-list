@@ -38,7 +38,7 @@ function AddTodo() {
     if (errorMessage !== '' && inputText.length > 0) {
       setErrorMessage('');
     }
-  }, [inputText, errorMessage]);
+  }, [inputText]);
 
   return (
     <div id="addTodo" className={styles.addTodo}>
