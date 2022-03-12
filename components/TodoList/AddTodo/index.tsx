@@ -4,7 +4,7 @@ import { Store } from '@/utils/Store';
 import { addTodo } from '@/utils/api';
 
 function AddTodo() {
-  const noText = 'You need to write something!';
+  const noTextMessage = 'You need to write something!';
   const [inputText, setInputText] = useState('');
   const { dispatch } = useContext(Store);
   const [errorMessage, setErrorMessage] = useState('');
@@ -15,7 +15,7 @@ function AddTodo() {
       dispatch({ type: 'ADD_TODO', payload: response.data });
       setInputText('');
     } else {
-      setErrorMessage(noText);
+      setErrorMessage(noTextMessage);
     }
   };
 
@@ -25,7 +25,7 @@ function AddTodo() {
       dispatch({ type: 'ADD_TODO', payload: response.data });
       setInputText('');
     } else {
-      setErrorMessage(noText);
+      setErrorMessage(noTextMessage);
     }
   };
 
@@ -47,7 +47,7 @@ function AddTodo() {
         placeholder="Add your todo..."
         value={inputText}
       />
-      {errorMessage && (
+      {errorMessage !== '' && (
         <div className={styles.addTodo__errorMessage}>{errorMessage}</div>
       )}
       <button onClick={handleClick} className={styles.addTodo__button}>
