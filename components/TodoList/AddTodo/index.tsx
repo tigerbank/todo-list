@@ -35,10 +35,10 @@ function AddTodo() {
   };
 
   useEffect(() => {
-    if (inputText.length > 0) {
+    if (errorMessage !== '' && inputText.length > 0) {
       setErrorMessage('');
     }
-  }, [inputText]);
+  }, [inputText, errorMessage]);
 
   return (
     <div id="addTodo" className={styles.addTodo}>
