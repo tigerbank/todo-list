@@ -1,0 +1,18 @@
+[
+  {
+    "id": "5fe3f4ca-193c-4170-83c1-cb5a19908601",
+    "title": "Buy Milk",
+    "completed": false
+  },
+  {
+    "id": "f619466c-a016-4281-b584-7db2795d103d",
+    "title": "Buy Eggs",
+    "completed": true  
+  },
+  {
+    "id": "5fe3f4ca-193c-4170-83c1-cb5a19908602",
+    "title": "Buy Orange",
+    "completed": false
+  
+  }
+]

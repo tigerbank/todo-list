@@ -15,7 +15,7 @@ function AddTodo() {
     }
   };
   return (
-    <div className={styles.addTodo}>
+    <div id="addTodo" className={styles.addTodo}>
       <input
         maxLength={70}
         onChange={(e) => setInputText(e.target.value)}

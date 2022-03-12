@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 import { TodoProps } from '@/interfaces/common';
 
 export function getApiURL(path: string) {
@@ -35,10 +36,19 @@ export async function updateTodo(selectedTodo: TodoProps, inputEdit: string) {
 }
 
 export async function addTodo(inputText: string) {
-  return axios.post(`${process.env.NEXT_PUBLIC_API_URL}/todos/`, {
-    title: inputText,
-    completed: false,
-  });
+  return axios.post(
+    `${process.env.NEXT_PUBLIC_API_URL}/todos/`,
+    {
+      id: uuidv4(),
+      title: inputText,
+      completed: false,
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  );
 }
 
 export async function deleteTodo(id: string) {

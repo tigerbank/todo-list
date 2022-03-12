@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-
 import styles from './Progress.module.scss';
 import { Store } from '@/utils/Store';
 import { TodoProps } from '@/interfaces/common';
@@ -20,7 +19,7 @@ function Progress() {
         value={completedTasks.length}
         max={state.todoLists.length}
       />
-      <p className={styles.progress__count}>
+      <p id="progressCount" className={styles.progress__count}>
         {completedTasks.length} completed
       </p>
     </div>

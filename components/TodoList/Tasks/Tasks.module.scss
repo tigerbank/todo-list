@@ -1,5 +1,5 @@
 .tasks {
-  margin-top: 33px;
+  margin-top: 32px;
 
   &__headerFlex {
     display: flex;
@@ -84,26 +84,16 @@
     width: 22px;
     height: 22px;
     border-radius: 6px;
-    transform: translateY(-0.075em);
-    color: currentColor;
+    padding: 0px;
     display: grid;
     place-content: center;
   }
 
   &__lists > li input[type='checkbox']::before {
-    content: '';
-    width: 0.65em;
-    height: 0.65em;
-    transform: scale(0);
-    transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em var(--form-control-color);
-    background-color: #fff;
-    transform-origin: bottom left;
-    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-  }
-
-  &__lists > li input[type='checkbox']:checked::before {
-    transform: scale(1);
+    position: relative;
+    top: 1px;
+    left: -1px;
+    content: url('/images/checked.svg');
   }
 
   &__lists > li input[type='checkbox']:checked {

@@ -64,8 +64,15 @@ function PopOverButton({
             setIsOpen(false);
           }}
         >
-          <li onClick={() => handleEdit(todoList)}>Edit</li>
-          <li onClick={() => handleDeleteTodo(todoList.id)}>Delete</li>
+          <li className="popover__edit" onClick={() => handleEdit(todoList)}>
+            Edit
+          </li>
+          <li
+            className="popover__delete"
+            onClick={() => handleDeleteTodo(todoList.id)}
+          >
+            Delete
+          </li>
         </motion.ul>
       )}
     </div>

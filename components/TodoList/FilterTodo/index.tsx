@@ -33,7 +33,7 @@ function FilterTodo({ onClickOutside }: { onClickOutside: any }) {
 
   return (
     <div className={styles.filterTodo}>
-      <button onClick={() => setIsOpen(true)}>
+      <button id="filterTodoButton" onClick={() => setIsOpen(true)}>
         <span>{state.filter}</span>
         <motion.div
           initial={!isOpen ? { rotateZ: 180 } : { rotateZ: 0 }}
@@ -49,9 +49,15 @@ function FilterTodo({ onClickOutside }: { onClickOutside: any }) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
         >
-          <li onClick={(e) => handleClick(e)}>All</li>
-          <li onClick={(e) => handleClick(e)}>Done</li>
-          <li onClick={(e) => handleClick(e)}>Undone</li>
+          <li data-testid="list-all" onClick={(e) => handleClick(e)}>
+            All
+          </li>
+          <li data-testid="list-done" onClick={(e) => handleClick(e)}>
+            Done
+          </li>
+          <li data-testid="list-undone" onClick={(e) => handleClick(e)}>
+            Undone
+          </li>
         </motion.ul>
       )}
     </div>
