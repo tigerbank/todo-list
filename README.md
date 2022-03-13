@@ -19,6 +19,7 @@
 ## How To Use
 
 - Change .env.example to .env.local
+- This App is required json-server to run on port http://localhost:3001
 
 ```bash
 # Install dependencies
