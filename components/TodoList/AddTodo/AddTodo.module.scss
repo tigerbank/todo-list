@@ -37,9 +37,13 @@
     &:hover {
       background-color: #756ebb;
     }
+    &:disabled {
+      background-color: #bcbcbc;
+      cursor: not-allowed;
+    }
   }
 
-  @media only screen and (max-width: 735px) {
+  @media only screen and (max-width: 820px) {
     &__button {
       display: block;
     }

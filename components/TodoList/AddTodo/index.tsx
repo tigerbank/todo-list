@@ -52,8 +52,12 @@ function AddTodo() {
       {inputText.length === 0 && errorMessage !== '' && (
         <div className={styles.addTodo__errorMessage}>{errorMessage}</div>
       )}
-      <button onClick={handleClick} className={styles.addTodo__button}>
-        Add
+      <button
+        onClick={handleClick}
+        className={styles.addTodo__button}
+        disabled={loading}
+      >
+        {loading ? 'Sending...' : 'Add'}
       </button>
     </div>
   );
