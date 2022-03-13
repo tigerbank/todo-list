@@ -1,10 +1,3 @@
-<h1 align="center">
-
-Todo App
-
-</h1>
-
-
 ## Preview
 
 [https://todo-list-six-swart.vercel.app/](https://todo-list-six-swart.vercel.app/)
