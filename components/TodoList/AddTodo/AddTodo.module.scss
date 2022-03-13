@@ -1,3 +1,5 @@
+@import '@/styles/colors.module';
+
 .addTodo {
   margin-top: 17px;
   input[type='text'] {
@@ -12,11 +14,11 @@
     color: #bcbcbc;
   }
   input[type='text']:focus {
-    outline-color: #585292;
+    outline-color: $color-secondary;
   }
 
   &__errorMessage {
-    color: #e07c7c;
+    color: $color-primary;
     font-size: 12px;
     margin-top: 20px;
     margin-left: 20px;
@@ -27,7 +29,7 @@
     height: 46px;
     border: none;
     border-radius: 9999px;
-    background-color: #585292;
+    background-color: $color-secondary;
     color: #fff;
     font-size: 16px;
     cursor: pointer;

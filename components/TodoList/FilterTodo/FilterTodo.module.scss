@@ -1,3 +1,4 @@
+@import '@/styles/colors.module';
 .filterTodo {
   position: relative;
   button {
@@ -12,7 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #2e2e2e;
+    color: $color-font;
   }
   ul {
     position: absolute;
@@ -33,7 +34,7 @@
   }
 
   li:hover {
-    background: #585292;
+    background: $color-secondary;
     border-radius: 8px;
     color: #fff;
   }

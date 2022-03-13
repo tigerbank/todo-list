@@ -9,17 +9,15 @@ describe('FilterTodo', () => {
     expectedProps = {
       onClickOutside: jest.fn(),
     };
+    render(<FilterTodo {...expectedProps} />);
   });
 
   it('Renders Button', () => {
-    render(<FilterTodo {...expectedProps} />);
     const button = screen.getByRole('button', { name: 'All' });
     expect(button).toBeInTheDocument();
   });
 
   it('Renders All, Done, Undone', () => {
-    render(<FilterTodo {...expectedProps} />);
-
     const button = screen.getByRole('button', { name: 'All' });
     fireEvent.click(button);
 

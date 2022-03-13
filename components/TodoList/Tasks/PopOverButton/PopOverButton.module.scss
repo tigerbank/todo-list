@@ -1,3 +1,4 @@
+@import '@/styles/colors.module';
 .popOverButton {
   margin-left: auto;
   cursor: pointer;
@@ -21,7 +22,7 @@
     }
     li:last-child {
       margin-bottom: 0;
-      color: #e07c7c;
+      color: $color-primary;
     }
   }
 }

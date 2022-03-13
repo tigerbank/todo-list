@@ -17,16 +17,15 @@ describe('FilterTodo', () => {
       handleEdit: jest.fn(),
       onClickOutside: jest.fn(),
     };
+    render(<PopOverButton {...expectedProps} />);
   });
 
   it('Renders Button', () => {
-    render(<PopOverButton {...expectedProps} />);
     const button = screen.getByAltText('button');
     expect(button).toBeInTheDocument();
   });
 
   it('should show edit and delete link', () => {
-    render(<PopOverButton {...expectedProps} />);
     const button = screen.getByAltText('button');
     fireEvent.click(button);
     const editButton = screen.getByText('Edit');

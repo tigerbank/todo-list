@@ -1,5 +1,6 @@
+@import '@/styles/colors.module';
 .progress {
-  background: #e07c7c;
+  background: $color-primary;
   padding: 17px 19px 24px 19px;
   border-radius: 20px;
   color: #fff;

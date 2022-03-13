@@ -1,3 +1,5 @@
+@import '@/styles/colors.module';
+
 .tasks {
   margin-top: 32px;
 
@@ -37,7 +39,7 @@
   }
 
   &__message {
-    color: #e07c7c;
+    color: $color-primary;
     margin-top: 20px;
   }
 
@@ -48,7 +50,7 @@
   }
 
   &__button {
-    background: #585292;
+    background: $color-secondary;
     color: #fff;
     border: none;
     padding: 10px 17px;
@@ -76,7 +78,7 @@
   /*Custom checkbox style*/
   &__lists > li input[type='checkbox'] {
     margin: 0;
-    border: solid 2px #585292;
+    border: solid 2px $color-secondary;
     -webkit-appearance: none;
     appearance: none;
     background-color: #fff;
@@ -97,7 +99,7 @@
   }
 
   &__lists > li input[type='checkbox']:checked {
-    background-color: #585292;
+    background-color: $color-secondary;
   }
   /*End Custom checkbox style*/
 }
