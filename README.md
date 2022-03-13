@@ -1,34 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
 
-## Getting Started
+Todo App
 
-First, run the development server:
+</h1>
+
+<h4 align="center">Todo react application</h4>
+
+## Preview
+
+Preview: [https://todo-list-six-swart.vercel.app/](https://todo-list-six-swart.vercel.app/)
+
+## Key Features
+
+1. Add task
+2. Edit task
+3. Delete task
+4. Mark as done
+5. See what’s done
+6. Show progress
+
+- React hooks
+- React Context API
+- Responsive
+- Cypress for testing
+
+## How To Use
+
+- Change .env.example to .env.local
 
 ```bash
-npm run dev
-# or
-yarn dev
+# Install dependencies
+$ yarn
+
+# Run the app
+$ yarn start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Automated Testing
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+# End to End Testing
+$ yarn cypress
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# Unit test
+$ yarn test
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[https://github.com/tigerbank/todo-list/actions](https://github.com/tigerbank/todo-list/actions)
