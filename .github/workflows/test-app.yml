@@ -1,12 +1,13 @@
-name: E2E on Chrome
+name: end-to-end tests chrome headless
 on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-20.04
-    # let's make sure our tests pass on Chrome browser
-    name: E2E on Chrome
     steps:
       - uses: actions/checkout@v2
       - uses: cypress-io/github-action@v2
         with:
+          start: npm start
+          wait-on: 'http://localhost:5000'
           browser: chrome
+          headless: true
