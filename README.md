@@ -25,6 +25,9 @@
 # Install dependencies
 $ yarn
 
+# Build
+$ yarn build
+
 # Run the app
 $ yarn start
 ```
