@@ -34,12 +34,6 @@ function AddTodo() {
     }
   };
 
-  useEffect(() => {
-    if (errorMessage !== '' && inputText.length > 0) {
-      setErrorMessage('');
-    }
-  }, [inputText]);
-
   return (
     <div id="addTodo" className={styles.addTodo}>
       <input
@@ -55,7 +49,7 @@ function AddTodo() {
         placeholder="Add your todo..."
         value={inputText}
       />
-      {errorMessage !== '' && (
+      {inputText.length === 0 && errorMessage !== '' && (
         <div className={styles.addTodo__errorMessage}>{errorMessage}</div>
       )}
       <button onClick={handleClick} className={styles.addTodo__button}>
