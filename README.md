@@ -10,10 +10,16 @@
 4. Mark as done
 5. See what’s done
 6. Show progress
+7. Responsive design
 
+## Build with
+- Typescript
+- Nextjs
 - React hooks
 - React Context API
-- Responsive
+- Axios
+- Framer-motion
+- Sass
 - Cypress for testing
 
 ## How To Use
@@ -47,4 +53,6 @@ $ yarn cypress
 https://user-images.githubusercontent.com/19749339/158056704-8d656032-dcff-4a29-8bd4-2b81483ed092.mov
 
 
-
+## Deployment
+- Vercel
+- Heroku
