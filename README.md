@@ -4,11 +4,10 @@ Todo App
 
 </h1>
 
-<h4 align="center">Todo react application</h4>
 
 ## Preview
 
-Preview: [https://todo-list-six-swart.vercel.app/](https://todo-list-six-swart.vercel.app/)
+[https://todo-list-six-swart.vercel.app/](https://todo-list-six-swart.vercel.app/)
 
 ## Key Features
 
