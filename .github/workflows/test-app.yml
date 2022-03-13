@@ -12,3 +12,5 @@ jobs:
           wait-on: 'http://localhost:3000'
           browser: chrome
           headless: true
+        env:
+          NEXT_PUBLIC_API_URL: https://json-server-todo-tysl.herokuapp.com
