@@ -46,6 +46,9 @@ function AddTodo() {
         maxLength={70}
         onChange={(e) => {
           setInputText(e.target.value);
+          inputText === ''
+            ? setErrorMessage(noTextMessage)
+            : setErrorMessage('');
         }}
         onKeyPress={handleKeyPress}
         type="text"
