@@ -34,9 +34,6 @@ $ yarn start
 ```bash
 # End to End Testing
 $ yarn cypress
-
-# Unit test
-$ yarn test
 ```
 
 [https://github.com/tigerbank/todo-list/actions](https://github.com/tigerbank/todo-list/actions)
